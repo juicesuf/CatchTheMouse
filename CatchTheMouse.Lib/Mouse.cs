@@ -15,7 +15,16 @@ namespace CatchTheMouse.Lib
 
         public override Position Move()
         {
-            return base.Move();
+            while (true)
+            {
+                MouseMove move = MouseMove.GetMove();
+                Position position = new Position(Position.X + move.DeltaX, Position.Y + move.DeltaY);
+                if (_playingArea.IsValid(position))
+                {
+                    Move(position);
+                    return position;
+                }
+            }
         }
     }
 }

@@ -8,7 +8,7 @@ namespace CatchTheMouse.Lib
 {
     public class MouseMove
     {
-        static private Random random = new Random();
+        static private Random _random = new Random();
         static private MouseMove[] _allMoves; 
         
         internal int DeltaX
@@ -21,9 +21,19 @@ namespace CatchTheMouse.Lib
             get;
         }
 
-        static public MouseMove()
+        static MouseMove()
         {
-
+            _allMoves = new MouseMove[]
+            {
+                new MouseMove(-1, -1), 
+                new MouseMove(-1,  0), 
+                new MouseMove(-1,  1), 
+                new MouseMove( 0, -1), 
+                new MouseMove( 0,  1), 
+                new MouseMove( 1, -1), 
+                new MouseMove( 1,  0), 
+                new MouseMove( 1,  1), 
+            };
         }
 
         public MouseMove(int deltaX, int deltaY)
@@ -34,7 +44,7 @@ namespace CatchTheMouse.Lib
 
         static internal MouseMove GetMove()
         {
-
+            return _allMoves[_random.Next(_allMoves.Length)];
         }
 
 

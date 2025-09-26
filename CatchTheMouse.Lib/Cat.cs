@@ -10,6 +10,7 @@ namespace CatchTheMouse.Lib
     {
         public Cat(PlayingArea playingArea) : base(playingArea)
         {
+
         }
     }
 }

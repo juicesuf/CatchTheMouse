@@ -20,22 +20,31 @@ namespace CatchTheMouse.Lib
         protected Player(PlayingArea playingArea)
         {
             _playingArea = playingArea;
+            Position = new Position();
+            DoTheMove();
         }
 
         public void Move(Position position)
         {
-            if (!_playingArea.IsValid(position))
+            if (_playingArea.IsValid(position))
             {
                 Position.X = position.X;
-                Position.Y = Position.Y;
+                Position.Y = position.Y;
             }
         }
 
         public virtual Position Move()
         {
+            DoTheMove();
+            return Position;
+        }
+
+        private void DoTheMove()
+        {
+            Position position = new Position();
             Position.X = random.Next(0, _playingArea.Width);
             Position.Y = random.Next(0, _playingArea.Height);
-            return Position;
+            Move(position);
         }
     }
 }
